@@ -10,5 +10,5 @@ jobs:
     steps:
       - uses: kzrnm/get-net-sdk-project-versions-action@v1.3.0
         with:
-          proj-path: Oasis.ReportTestTool/Oasis.ReportTestTool
+          proj-path: Oasis.ReportTestTool/Oasis.ReportTestTool.csproj
       - run: echo "${{steps.get-version.outputs.version}}"
