@@ -1,8 +1,5 @@
 name: Do stuff
-on:
-  push:
-    branches:
-      - master
+on: [push, workflow_dispatch]
 
 jobs:
   DoStuff:
