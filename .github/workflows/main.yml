@@ -5,16 +5,18 @@ jobs:
   DoStuff:
     name: Do Stuff
     runs-on: ubuntu-latest
+    
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-      - name: Get version
+      - uses: kzrnm/get-net-sdk-project-versions-action@v1
         id: get_version
-        uses: greenygh0st/net-proj-release-version@v1
         with:
-          
-          # Filepath of the *.csproj file, relative to root of repository
-          PROJ_FILE: Oasis.ReportTestTool/Oasis.ReportTestTool.csproj
-
-      - name: Next Step
-        run: echo "${{ steps.get_version.outputs.RELEASE_VERSION }}"
+          proj-path: Oasis.ReportTestTool/Oasis.ReportTestTool.csproj
+      - run: echo "${{steps.get-version.outputs.version}}"
+      - run: echo "${{steps.get-version.outputs.version-prefix}}" 
+      - run: echo "${{steps.get-version.outputs.version-suffix}}" 
+      - run: echo "${{steps.get-version.outputs.package-version}}" 
+      - run: echo "${{steps.get-version.outputs.assembly-version}}" 
+      - run: echo "${{steps.get-version.outputs.file-version}}" 
+      - run: echo "${{steps.get-version.outputs.informational-version}}" 
