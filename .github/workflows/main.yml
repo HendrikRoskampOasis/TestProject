@@ -1,0 +1,7 @@
+- name: get-net-sdk-project-versions-action
+  # You may pin to the exact commit or the version.
+  # uses: kzrnm/get-net-sdk-project-versions-action@7d65d2220244fd5275f2de24c018b18805bdaef1
+  uses: kzrnm/get-net-sdk-project-versions-action@v1.3.0
+  with:
+    # csproj/vbproj path
+    proj-path: Oasis.ReportTestTool/Oasis.ReportTestTool
