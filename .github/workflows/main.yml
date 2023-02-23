@@ -1,14 +1,23 @@
-name: Version Test
-  # You may pin to the exact commit or the version.
-  # uses: kzrnm/get-net-sdk-project-versions-action@7d65d2220244fd5275f2de24c018b18805bdaef1
-on: [push, workflow_dispatch]
+name: Do stuff
+on:
+  push:
+    branches:
+      - master
 
 jobs:
-  dotnet-build:
+  DoStuff:
+    name: Do Stuff
     runs-on: ubuntu-latest
-  
     steps:
-      - uses: kzrnm/get-net-sdk-project-versions-action@v1.3.0
+      - uses: actions/checkout@v2
+
+      - name: Get version
+        id: get_version
+        uses: greenygh0st/net-proj-release-version@v1
         with:
-          proj-path: ../../Oasis.ReportTestTool.csproj
-      - run: echo "${{steps.get-version.outputs.version}}"
+          
+          # Filepath of the *.csproj file, relative to root of repository
+          PROJ_FILE: Oasis.ReportTestTool/Oasis.ReportTestTool.csproj
+
+      - name: Next Step
+        run: echo "${{ steps.get_version.outputs.RELEASE_VERSION }}"
